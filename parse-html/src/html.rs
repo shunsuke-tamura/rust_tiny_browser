@@ -1,7 +1,7 @@
 use crate::dom::{AttrMap, Element, Node};
 use combine::error::ParseError;
 use combine::parser::char::{char, letter, newline, space};
-use combine::{between, many, many1, parser, satisfy, Parser, Stream};
+use combine::{between, many, many1, parser, satisfy, sep_by, Parser, Stream};
 
 /// `attribute` consumes `name="value"`.
 fn attribute<Input>() -> impl Parser<Input, Output = (String, String)>
@@ -29,8 +29,11 @@ where
     Input: Stream<Token = char>,
     Input::Error: ParseError<Input::Token, Input::Range, Input::Position>,
 {
-    todo!("you need to implement this combinator");
-    (char(' ')).map(|_| AttrMap::new())
+    sep_by::<Vec<(String, String)>, _, _, _>(
+        attribute(),
+        many::<String, _, _>(space().or(newline())),
+    )
+    .map(|attrs: Vec<(String, String)>| attrs.into_iter().collect())
 }
 
 /// `open_tag` consumes `<tag_name attr_name="attr_value" ...>`.
