@@ -1,11 +1,10 @@
 [package]
-name = "exercise-html"
+name = "parse-html"
 version = "0.1.0"
-authors = ["Takashi Yoneuchi <takashi.yoneuchi@shift-js.info>"]
 edition = "2018"
 
 [[bin]]
-name = "exercise-html"
+name = "parse-html"
 test = false
 bench = false
 
