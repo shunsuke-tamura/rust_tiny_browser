@@ -1,4 +1,4 @@
-use exercise_rendering::{
+use rendering::{
     css,
     dom::{Node, NodeType},
     html,
