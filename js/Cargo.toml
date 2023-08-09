@@ -1,0 +1,15 @@
+[package]
+name = "js"
+version = "0.1.0"
+authors = [""]
+edition = "2018"
+
+[[bin]]
+name = "js"
+test = false
+bench = false
+
+[dependencies]
+combine = "4.5.2"
+cursive = "0.16.3"
+rusty_v8 = "0.22.1"
